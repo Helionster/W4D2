@@ -8,11 +8,10 @@ class Piece
     end
 
     def to_s
-        self.symbol
+        self.symbol.colorize(color)
     end
 
     def empty?
-        return true if board[self.pos] == :nil 
         return false
     end
 
@@ -26,6 +25,6 @@ class Piece
 
     private
     def move_into_check?(end_pos)
-        
+
     end
 end

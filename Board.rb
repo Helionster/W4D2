@@ -1,15 +1,15 @@
-require 'byebug'
 require_relative 'piece.rb'
+require_relative 'NullPiece.rb'
 
 class Board
     attr_accessor :board
     def initialize
-        @board = Array.new(8) {Array.new(8,:nil)}
+        @board = Array.new(8) {Array.new(8,NullPiece.instance)}
         
         (0..7).each do |row|
             (0..7).each do |col|
                 if (0..1).include?(row) || (6..7).include?(row)
-                    @board[row][col] = Piece.new
+                    self[[row,col]] = Piece.new
                 end
             end
         end
@@ -26,16 +26,22 @@ class Board
     end
 
     def move_piece(start_pos,end_pos)
-        raise 'No piece selected.' if start_pos == :nil 
+        raise 'No piece selected.' if start_pos == NullPiece.instance
         raise 'Cant move there' if self[end_pos] == '1'
 
         holder_piece = self[start_pos]
-        self[start_pos] = :nil 
+        self[start_pos] = NullPiece.instance
         self[end_pos] = holder_piece
     end
 
     def valid?(pos)
         return false if !(0..7).include?(pos[0]) || if !(0..7).include?(pos[1])
         return true
+    end
+
+    def render
+        @board.each do |row|
+            puts row.join(" ")
+        end
     end
 end

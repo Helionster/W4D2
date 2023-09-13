@@ -35,7 +35,7 @@ module Stepable
 
       self.move_dirs.each do |dir|
         new_pos = moves_adder(self.pos, dir)
-        new_moves << new_pos if self.valid?(new_pos)
+        new_moves << new_pos if self.valid?(new_pos) && new_pos == NullPiece.instance
       end
 
       new_moves << new_pos if board[new_pos].piece.color != self.color

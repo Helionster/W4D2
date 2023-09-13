@@ -46,7 +46,7 @@ module Slideable
   
         until !board.valid?(current_pos)
           new_pos = moves_adder(current_pos, dir)
-          collect_moves << new_pos if new_pos == :nil
+          collect_moves << new_pos if new_pos == NullPiece.instance
           current_pos = new_pos
         end
             
