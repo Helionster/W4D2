@@ -4,7 +4,6 @@ require_relative 'piece.rb'
 class Board
     attr_accessor :board
     def initialize
-        debugger
         @board = Array.new(8) {Array.new(8,:nil)}
         
         (0..7).each do |row|
@@ -14,7 +13,6 @@ class Board
                 end
             end
         end
-        # p @board
     end
 
     def [](pos)
@@ -29,10 +27,10 @@ class Board
 
     def move_piece(start_pos,end_pos)
         raise 'No piece selected.' if start_pos == :nil 
-        raise 'Cant move there' if @board[end_pos] == '1'
+        raise 'Cant move there' if self[end_pos] == '1'
 
-        holder_piece = @board[start_pos]
-        @board[start_pos] = :nil 
-        @board[end_pos] = holder_piece
+        holder_piece = self[start_pos]
+        self[start_pos] = :nil 
+        self[end_pos] = holder_piece
     end
 end
