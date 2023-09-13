@@ -8,7 +8,7 @@ class Rook < Piece
     '♜'
   end
 
-  protected
+  private
 
   def move_dirs
     horizontal_dirs

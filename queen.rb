@@ -9,7 +9,7 @@ class Queen < Piece
     '♛'
   end
 
-  protected
+  private
 
   def all_possible_moves
     @horizontal_dirs.concat(@diagonal_dirs)
