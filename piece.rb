@@ -1,8 +1,10 @@
 class Piece 
+    attr_reader :color, :board, :pos
+
     def initalize(color, board, pos)
-        @color = 
-        @board = 
-        @pos = 
+        @color = color
+        @board = Board
+        @pos = []
     end
 
     def to_s
