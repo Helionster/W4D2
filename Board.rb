@@ -33,4 +33,9 @@ class Board
         self[start_pos] = :nil 
         self[end_pos] = holder_piece
     end
+
+    def valid?(pos)
+        return false if !(0..7).include?(pos[0]) || if !(0..7).include?(pos[1])
+        return true
+    end
 end
